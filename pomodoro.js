@@ -1,4 +1,4 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
 // All of our global variables
 
@@ -96,4 +96,4 @@ $(document).ready(function() {
     nextTimer = "Break";
   }
 
-});
+// });
