@@ -4,8 +4,7 @@
 
   var workTime = 1500;
   var breakTime = 300;
-  var timer = workTime;
-  var currentTime = timer;
+  var timer = workTime; // Start timer at the length of time for a work interval
   var nextTimer = "Break";
   var on = true;
 
@@ -43,8 +42,8 @@
   }
 
   function countdown() {
+    on = true
     if (on === true) {
-      timer = currentTime;
       on = setInterval(downtick, 1000);
         // Without "on = " in the above, our clearInterval functions won't actually stop the timer
     }
@@ -72,9 +71,9 @@
 
   function pause() {
     clearInterval(on);
-    on = true;    
+    on = false;    
     // When we accidentally wrote "on == true", it returned false and the timer wouldn't restart
-    currentTime = timer;
+    // currentTime = timer;
   }
 
   function stop() {
