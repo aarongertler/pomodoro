@@ -10,22 +10,49 @@
 <body>
   <div class = "container">
     <h1>Aaron's Pomodoro Clock</h1>
-    <div id="clock">
+    <h3>Time left:</h3>
+    <div id="timer">
       <!-- Further specify the spacing of digits as needed -->
-      <!-- 25:00 -->
     </div>
+    <h3>Work interval:</h3>
+    <div id="workTimer">
+    </div>
+    <h3>Break interval:</h3>
+    <div id="breakTimer">
+    </div>
+    <br>
+    <br>
     <button type="button" id="start">
       Start the clock
     </div>
     <button type="button" id="pause">
       Pause the clock
     </button>
+    <br>
     <button type="button" id="stop">
       Stop the clock
     </button>
+    <br>
     <button type="button" id="reset">
-      Reset the clock
+      Reset the clock and all intervals
     </button>
+    <br>
+    <br>
+    <button type="button" id="lessWork">
+      Take one minute from each break interval
+    </button>
+    <button type="button" id="moreWork">
+      Add one minute to each work interval
+    </button>
+    <br>
+    <br>
+    <button type="button" id="lessBreak">
+      Take one minute from each break interval
+    </button>
+    <button type="button" id="moreBreak">
+      Add one minute to each break interval
+    </button>
+    <br>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -1,29 +1,68 @@
-// $(document).ready(function() {
+$(document).ready(function() {
 
 // All of our global variables
-
-  var workTime = 1500;
+  
   var breakTime = 300;
-  var timer = workTime; // Start timer at the length of time for a work interval
+  var workTime = 1500,
+    timer = workTime, // Start timer at the length of time for a work interval
+    currentTime = timer; // Represents time left for current stage
   var nextTimer = "Break";
   var on = true;
 
-  $("#clock").text(timeString(workTime));
+  // Show start time when clock is loaded
 
+  $("#timer").text(timeString(timer));
+  $("#workTimer").text(timeString(workTime));
+  $("#breakTimer").text(timeString(breakTime));
 
-  // Click handlers
+  // Click handler to change work/break times
 
-  $("#start").click(countdown);
+  // Click handlers for the timer's buttons
 
-    // I spent nearly an hour figuring out that these weren't supposed to be in the form "countdown()"
-
+  $("#start").click(countdown); // Had to figure out that this wasn't in the form "countdown()"
   $("#pause").click(pause);
-
   $("#stop").click(stop);
   $("#reset").click(reset);
+  $("#lessWork").click(function() {
+    var newTime = workTime;
+    newTime -= 60;
+    timer = workTime = newTime;
+    $("#workTimer").text(timeString(newTime));
+    $("#timer").text(timeString(newTime));
+  });
+  $("#moreWork").click(function() {
+    var newTime = workTime;
+    newTime += 60;
+    timer = workTime = newTime;
+    $("#workTimer").text(timeString(newTime));
+    $("#timer").text(timeString(newTime));
+  });
+  $("#lessBreak").click(function() {
+    var newTime = breakTime;
+    newTime -= 60;
+    breakTime = newTime;
+    $("#breakTimer").text(timeString(newTime));
+  });
+  $("#moreBreak").click(function() {
+    var newTime = breakTime;
+    newTime += 60;
+    breakTime = newTime;
+    $("#breakTimer").text(timeString(newTime));
+  });
 
 
   // All of our functions
+
+  function reduceWorkTime() {
+      // var newTime = workTime;
+      // newTime ++;
+      // $("#workTimer").text(timeString(newTime));
+      // $("#timer").text(timeString(newTime));
+      // timer = 
+      //   currentTime = 
+      //   workTime = newTime
+      // $("#timer").text(timeString(workTime))
+  }
 
   function timeString(time) {
     var minutes = Math.floor(time / 60)
@@ -51,7 +90,7 @@
     function downtick() {
       if (timer != 0) {
         timer--;
-        $("#clock").text(timeString(timer))
+        $("#timer").text(timeString(timer))
       }
       else {
         switch (nextTimer) {
@@ -64,7 +103,7 @@
             nextTimer = "Break";
             break;
         }
-      $("#clock").text(timeString(timer))
+      $("#timer").text(timeString(timer))
       }
     }
   }
@@ -80,7 +119,7 @@
     clearInterval(on);
     on = true;
     timer = workTime;
-    $("#clock").text(timeString(workTime));
+    $("#timer").text(timeString(workTime));
     nextTimer = "Break";
   }
 
@@ -91,8 +130,11 @@
     clearInterval(on);
     on = true;
     timer = workTime = 1500
-    $("#clock").text(timeString(workTime));
+    breakTime = 300
+    $("#timer").text(timeString(workTime));
+    $("#workTimer").text(timeString(workTime));
+    $("#breakTimer").text(timeString(breakTime));
     nextTimer = "Break";
   }
 
-// });
+});
